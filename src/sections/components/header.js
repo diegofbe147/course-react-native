@@ -12,7 +12,7 @@ function Header(props) {
     <SafeAreaView>
       <View style={styles.mainContainer}>
         <View style={styles.leftContainer}>
-          <Image 
+          <Image
            source={require('../../../assets/logo.png')}
            style={styles.logo}
          />
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
   },
   textRight: {
     backgroundColor: 'yellow',
+    textAlignVertical: 'center',
   }
 })
 
