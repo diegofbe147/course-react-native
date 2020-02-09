@@ -30,17 +30,14 @@ function Header(props) {
 const styles = StyleSheet.create({
   mainContainer: {
     padding: 20,
-    backgroundColor: 'red',
     flexDirection: 'row',
   },
   leftContainer: {
-    backgroundColor: 'purple',
     flexDirection: 'row',
     width: '50%',
     justifyContent: 'flex-start'
   },
   rightContainer: {
-    backgroundColor: 'gray',
     flexDirection: 'row',
     width: '50%',
     justifyContent: 'flex-end'
@@ -49,10 +46,8 @@ const styles = StyleSheet.create({
     width: 80,
     height: 26,
     resizeMode: 'contain',
-    backgroundColor: 'green',
   },
   textRight: {
-    backgroundColor: 'yellow',
     textAlignVertical: 'center',
   }
 })
