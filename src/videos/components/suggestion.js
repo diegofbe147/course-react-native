@@ -18,11 +18,10 @@ function Suggestion(props){
       </View>
 
       <View style={styles.containerRight}>
-        <Text style={styles.title}> {props.title} </Text>
-        <Text style={styles.year}> {props.year} </Text>
-        <Text style={styles.stars}> {props.rating} Estrellas </Text>
+        <Text style={styles.title}>{props.title}</Text>
+        <Text style={styles.year}>{props.year}</Text>
+        <Text style={styles.stars}>{props.rating} Estrellas</Text>
       </View>
-
     </View>
   )
 }
