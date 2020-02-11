@@ -11,11 +11,8 @@ function Empty(props) {
 
 styles = StyleSheet.create({
   containerEmpty: {
-    paddingVertical: '50%',
-    backgroundColor: 'red',
   },
   message: {
-    textAlign: 'center',
     fontSize: 16,
   }
 })
