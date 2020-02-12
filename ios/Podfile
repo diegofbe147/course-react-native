@@ -34,6 +34,9 @@ target 'platziApp' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+
+
+
   target 'platziAppTests' do
     inherit! :search_paths
     # Pods for testing
