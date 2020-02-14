@@ -5,21 +5,45 @@ import Video from 'react-native-video';
 import Layout from '../components/layout'
 import ControlLayout from '../components/control-layout'
 import PlayPause from '../components/play-pause'
+import ProgressBar from '../components/progress-bar'
+import TimeLeft from '../components/time-left'
 
 class Player extends Component{
 
   state = {
     loading: true,
     paused: false,
+    duration: 0,
+    interval: 0.005614917,
+    progress: 0,
+    timeLeft: 0,
   }
 
-  onLoad = () => {
+  onLoad = (data) => {
     this.setState({
-      loading: false
+      loading: false,
+      duration: data.duration,
+      //interval: 1/data.duration
     })
   }
 
+  onProgress = (data) => {
+    this.state.timeLeft == this.state.duration ?
+    this.setState({
+      timeLeft: this.state.duration
+    })
+    :
+    this.setState({
+      timeLeft: data.currentTime
+    })
+
+    this.state.progress >= 1 ?
+      this.setState({progress:1}) :
+      this.setState({progress: this.state.progress+this.state.interval})
+  }
+
   playPause = () => {
+    console.log('progreso',this.state.interval)
     this.setState({
       paused: !this.state.paused
     })
@@ -36,6 +60,7 @@ class Player extends Component{
             resizeMode='cover'
             onLoad={this.onLoad}
             paused={this.state.paused}
+            onProgress={this.onProgress}
           />
         }
         loader={
@@ -47,8 +72,11 @@ class Player extends Component{
               onPress={this.playPause}
               pause={this.state.paused}
             />
-            <Text>Progress bar |</Text>
-            <Text> Time left |</Text>
+            <ProgressBar progress={this.state.progress}/>
+            <TimeLeft 
+              timeLeft={this.state.timeLeft}
+              duration={this.state.duration}
+            />
             <Text> Fullscreen</Text>
           </ControlLayout>
         }
