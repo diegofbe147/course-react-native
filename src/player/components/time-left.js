@@ -1,8 +1,8 @@
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React from 'react';
+import {View, Text, StyleSheet} from 'react-native';
 
 function TimeLeft(props) {
-  return(
+  return (
     <View style={styles.container}>
       <Text style={styles.timeInfo}>
         {props.timeLeft} / {props.duration}
@@ -12,13 +12,13 @@ function TimeLeft(props) {
 }
 
 const styles = StyleSheet.create({
-  container:{
-    //flex: 1,
-    backgroundColor: 'red'
+  container: {
+    backgroundColor: 'red',
+    marginRight: 10,
   },
   timeInfo: {
-    fontWeight: 'bold'
-  }
-})
+    fontWeight: 'bold',
+  },
+});
 
-export default TimeLeft
+export default TimeLeft;
