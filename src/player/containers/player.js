@@ -20,20 +20,47 @@ class Player extends Component {
     timeLeft: 0,
     fullscreen: false,
     volume: 1,
+    actual: 0,
+    counter: 0,
   };
 
+  parseTime = time => {
+    let minutes = Math.floor(time / 60);
+    let seconds = Math.floor(time - minutes * 60);
+    let timeParse = `${minutes}:${seconds}`;
+    return timeParse
+  }
+
   onLoad = data => {
-    let minutes = Math.floor(data.duration / 60) % 60;
-    let seconds = Math.floor(data.duration - minutes * 60);
-    let time = `${minutes}:${seconds}`;
+    let time = this.parseTime(data.duration)
     this.setState({
       loading: false,
       duration: time,
-      interval: 0.1 / data.duration,
+      interval: 1 / data.duration,
     });
+    console.log('interval', this.state.interval)
   };
 
-  onProgress = data => {};
+  onProgress = data => {
+    let time = this.parseTime(data.currentTime)
+    this.setState({
+      timeLeft: time
+    });
+    this.setState({
+      actual: Math.floor(data.currentTime)
+    })
+    console.log(this.state.actual)
+    if (this.state.actual == this.state.counter){
+      console.log('entra');
+    }else{
+      this.setState({counter: this.state.counter+1})
+      this.setState({progress: this.state.progress+this.state.interval})
+    }
+
+    /*this.state.actual != counter
+      ? console.log('entra') //this.setState({progress: this.state.progress+this.state.interval})
+      : counter += 1*/
+  };
 
   playPause = () => {
     this.setState({
